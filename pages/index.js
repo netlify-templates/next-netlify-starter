@@ -11,9 +11,9 @@ export default function Home() {
       </Head>
 
       <main>
-        <Header title="Welcome to my app!" />
+        <Header title="Welcome! This is my developer website." />
         <p className="description">
-          Get started by editing <code>pages/index.js</code>
+          My website is at https://hypercraftermc.wixsite.com/home . </code>
         </p>
       </main>
 
