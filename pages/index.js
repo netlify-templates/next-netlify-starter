@@ -11,9 +11,9 @@ export default function Home() {
       </Head>
 
       <main>
-        <Header title="Welcome to my app!" />
+        <Header title="Đang Bảo Trì!" />
         <p className="description">
-          Get started by editing <code>pages/index.js</code>
+          hệ thống Rocket chat đang nâng cấp, các Bạn tạm thời trao đổi thông tin dự án qua mail nội bộ. Cảm ơn</code>
         </p>
       </main>
 
