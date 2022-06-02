@@ -10,9 +10,9 @@
 
   [plugins.inputs]
     skipPatterns = [
-       "*.css"
-       "*.js"
-       "*.jsx"
+       "*.css",
+       "*.js",
+       "*.jsx",
        "*.json"
     ]
     
