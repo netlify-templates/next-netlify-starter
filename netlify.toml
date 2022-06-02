@@ -4,3 +4,9 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+[[plugins]]
+  package = "netlify-plugin-checklinks"
+
+  [plugins.inputs]
+    checkExternal = false
