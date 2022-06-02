@@ -5,6 +5,6 @@ describe('successfully renders', () => {
 
   it('displays the welcome text', () => {
     cy.get('main > h1')
-    .should('have.text', 'Welcome to my app!');
+    .should('have.text', 'Welcome to my!');
   })
 })
