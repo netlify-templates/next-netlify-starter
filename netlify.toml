@@ -9,4 +9,11 @@
   package = "netlify-plugin-checklinks"
 
   [plugins.inputs]
-    checkExternal = false
+    skipPatterns = [
+       "*.css"
+       "*.js"
+       "*.jsx"
+       "*.json"
+    ]
+    
+    checkExternal = true
