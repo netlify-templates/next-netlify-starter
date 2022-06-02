@@ -6,14 +6,10 @@
   package = "@netlify/plugin-nextjs"
 
 [[plugins]]
-  package = "netlify-plugin-checklinks"
+  package = "netlify-plugin-cypress"
+
+  [plugins.inputs.postBuild]
+    enable = true
 
   [plugins.inputs]
-    skipPatterns = [
-       "*.css",
-       "*.js",
-       "*.jsx",
-       "*.json"
-    ]
-    
-    checkExternal = true
+    enable = false
