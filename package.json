@@ -8,9 +8,11 @@
     "export": "next export"
   },
   "dependencies": {
-    "cypress": "^10.0.3",
+    "cypress": "^4.2.0",
+    "dotenv": "^16.3.1",
+    "mongodb": "^5.8.1",
     "next": "^12.1.5",
-    "react": "^18.0.0",
+    "react": "^18.2.0",
     "react-dom": "^18.0.0"
   }
 }
