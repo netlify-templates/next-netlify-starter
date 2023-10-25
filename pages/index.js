@@ -7,7 +7,7 @@ export default function Home() {
     <div className="container">
       <Head>
         <title>sahil Starter!</title>
-        <link rel="icon" href="./images/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
