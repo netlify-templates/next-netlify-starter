@@ -8,9 +8,9 @@
     "export": "next export"
   },
   "dependencies": {
-    "cypress": "^10.0.3",
-    "next": "^12.1.5",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "cypress": "^13.4.0",
+    "next": "^14.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
