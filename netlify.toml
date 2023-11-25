@@ -4,3 +4,15 @@
 
 [[plugins]]
   package = "netlify-plugin-cypress"
+
+[context.production.environment]
+  NEXT_TELEMETRY_DISABLED=1
+
+[context.dev.environment]
+  NEXT_TELEMETRY_DISABLED=1
+
+[context.deploy-preview.environment]
+  NEXT_TELEMETRY_DISABLED=1
+
+[context.branch-deploy.environment]
+  NEXT_TELEMETRY_DISABLED=1
