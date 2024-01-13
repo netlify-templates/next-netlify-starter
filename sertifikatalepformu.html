@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kayıt Formu</title>
+
+  <!-- xlsx CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    form {
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 800px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      grid-column: span 4;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      background-color: #ff6600; /* turuncu */
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+      grid-column: span 4;
+    }
+
+    button:hover {
+      background-color: #cc5500; /* turuncu hover rengi */
+    }
+  </style>
+</head>
+<body>
+
+  <form id="myForm">
+    <h2>Kayıt Formu</h2>
+
+    <label for="isim">İsim:</label>
+    <input type="text" id="isim" name="isim">
+
+    <label for="soyisim">Soyisim:</label>
+    <input type="text" id="soyisim" name="soyisim">
+
+    <label for="uyruk">Uyruk:</label>
+    <input type="text" id="uyruk" name="uyruk">
+
+    <label for="kimlikNo">Kimlik Numarası:</label>
+    <input type="text" id="kimlikNo" name="kimlikNo">
+
+    <label for="dogumTarihi">Doğum Tarihi:</label>
+    <input type="text" id="dogumTarihi" name="dogumTarihi">
+
+    <label for="sinavSonucu">Sınav Sonucu:</label>
+    <input type="text" id="sinavSonucu" name="sinavSonucu">
+
+    <label for="basariDurumu">Başarı Durumu:</label>
+    <input type="text" id="basariDurumu" name="basariDurumu">
+
+    <label for="egitimBilgisi">Eğitim İsmi ve Saati:</label>
+    <input type="text" id="egitimBilgisi" name="egitimBilgisi" list="egitimListesi">
+    <datalist id="egitimListesi">
+      <option value="(HO RE KA) SERVİS PERSONELİ (GARSON) YETİŞTİRME 120 SAAT">
+      <option value="0-72 AY ÇOCUK GELİŞİMİ 180 SAAT">
+      <option value="0-72 AY ÇOCUK GELİŞİMİ 180 SAAT">
+      <option value="0-72 AY ÇOCUK GELİŞİMİ 180 SAAT">
+      <option value="0-72 AY ÇOCUK GELİŞİMİ EĞİTİMİ 180 SAAT">
+    </datalist>
+
+    <label for="egitimBaslangic">Eğitim Başlangıç Tarihi:</label>
+    <input type="text" id="egitimBaslangic" name="egitimBaslangic">
+
+    <label for="egitimBitis">Eğitim Bitiş Tarihi:</label>
+    <input type="text" id="egitimBitis" name="egitimBitis">
+
+    <label for="universite">Üniversite:</label>
+    <input type="text" id="universite" name="universite">
+
+    <label for="uluslararasiSertifika">Uluslararası Sertifika Olacak mı ?:</label>
+    <select id="uluslararasiSertifika" name="uluslararasiSertifika">
+      <option value="Evet">Evet</option>
+      <option value="Hayir">Hayır</option>
+    </select>
+
+    <label for="mailAdresi">Mail Adresi:</label>
+    <input type="text" id="mailAdresi" name="mailAdresi">
+
+    <label for="telefonNumarasi">Telefon Numarası:</label>
+    <input type="text" id="telefonNumarasi" name="telefonNumarasi">
+
+    <button type="button" onclick="addData()">Veri Ekle</button>
+    <button type="button" onclick="exportToExcel()">Excel'e Aktar</button>
+  </form>
+
+  <script>
+    var formData = [];
+
+    function addData() {
+      var sira = formData.length + 1;
+      var isim = document.getElementById('isim').value;
+      var soyisim = document.getElementById('soyisim').value;
+      var uyruk = document.getElementById('uyruk').value;
+      var kimlikNo = document.getElementById('kimlikNo').value;
+      var dogumTarihi = document.getElementById('dogumTarihi').value;
+      var sinavSonucu = document.getElementById('sinavSonucu').value;
+      var basariDurumu = document.getElementById('basariDurumu').value;
+      var egitimBilgisi = document.getElementById('egitimBilgisi').value;
+      var egitimBaslangic = document.getElementById('egitimBaslangic').value;
+      var egitimBitis = document.getElementById('egitimBitis').value;
+      var universite = document.getElementById('universite').value;
+      var uluslararasiSertifika = document.getElementById('uluslararasiSertifika').value;
+      var mailAdresi = document.getElementById('mailAdresi').value;
+      var telefonNumarasi = document.getElementById('telefonNumarasi').value;
+
+      formData.push([
+        sira, isim, soyisim, uyruk, kimlikNo, dogumTarihi, sinavSonucu,
+        basariDurumu, egitimBilgisi, egitimBaslangic, egitimBitis,
+        universite, uluslararasiSertifika, mailAdresi, telefonNumarasi
+      ]);
+
+      document.getElementById('myForm').reset();
+    }
+
+    function exportToExcel() {
+      var wb = XLSX.utils.book_new();
+      var ws = XLSX.utils.aoa_to_sheet([
+        ['SIRA', 'İsim', 'Soyisim', 'Uyruk', 'Kimlik Numarası', 'Doğum Tarihi', 'Sınav Sonucu',
+         'Başarı Durumu', 'Eğitim İsmi ve Saati', 'Eğitim Başlangıç Tarihi', 'Eğitim Bitiş Tarihi',
+         'Üniversite', 'Uluslararası Sertifika Olacak mı ?', 'Mail Adresi', 'Telefon Numarası'],
+        ...formData
+      ]);
+      XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+      XLSX.writeFile(wb, 'kayit_bilgileri.xlsx');
+    }
+  </script>
+</body>
+</html>
