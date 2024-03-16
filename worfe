@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jump Game</title>
+<style>
+    #player {
+        width: 50px;
+        height: 50px;
+        background-color: red;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+</style>
+</head>
+<body>
+<div id="player"></div>
+<p>Score: <span id="score">0</span></p>
+
+<script>
+    let player = document.getElementById('player');
+    let scoreDisplay = document.getElementById('score');
+    
+    let score = 0;
+    let jumping = false;
+    
+    document.addEventListener('keydown', function(event) {
+        if (event.key === ' ' && !jumping) {
+            jumping = true;
+            jumpPlayer();
+        }
+    });
+    
+    function jumpPlayer() {
+        let playerBottom = parseInt(player.style.bottom);
+        
+        if (playerBottom < 200) {
+            player.style.bottom = (playerBottom + 50) + 'px';
+        } else {
+            setInterval(function() {
+                let playerBottom = parseInt(player.style.bottom);
+                player.style.bottom = (playerBottom - 50) + 'px';
+                
+                if (playerBottom <= 0) {
+                    jumping = false;
+                    score++;
+                    scoreDisplay.textContent = score;
+                }
+            }, 100);
+        }
+    }
+</script>
+
+</body>
+</html>
