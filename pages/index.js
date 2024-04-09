@@ -28,7 +28,6 @@ export default function Home() {
               <br/>I never wanted to hurt you.
               <br/>I am really really sorry Harshi, if i did hurt you 😣.
               <br/>Please forgive me miss beautiful.
-              <br/>Having super pretty nails 💅🏻 and that gorgeous ring in your hand 💍.
             </>
           )
         }
