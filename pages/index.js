@@ -25,11 +25,10 @@ export default function Home() {
               <br/>I just didn't want you to scold yuvi for nothing. 
               <br/>I thought you would have done that and that's why 
               <br/>I was just consoling him, making him cheer up with lame jokes.
-              <br/>I never wanted to hurt you my Love 💗.
+              <br/>I never wanted to hurt you.
               <br/>I am really really sorry Harshi, if i did hurt you 😣.
               <br/>Please forgive me miss beautiful.
               <br/>Having super pretty nails 💅🏻 and that gorgeous ring in your hand 💍.
-              <br/>At the end, I can just say, <bold>I love you Harshi!!</bold>
             </>
           )
         }
@@ -92,7 +91,7 @@ export default function Home() {
         {
           !quizStarted && !data && (
             <>
-              <Header title="Welcome to our Harshi's Life 😍" />
+              <Header title="Welcome Harshi 😍" />
               <button
                 onClick={() => setQuizStarted(true)}
                 className="button-33"
