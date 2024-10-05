@@ -1,106 +1,78 @@
-import Head from 'next/head'
-import Header from '@components/Header'
-import Footer from '@components/Footer'
+import Head from 'next/head';
+import React from 'react';
 import { useState } from 'react';
 
 export default function Home() {
-  const [quizStarted, setQuizStarted] = useState(false);
-  const [date, setDate] = useState("");
-  const [movie, setMovie] = useState("");
-  const [dob, setDob] = useState("");
-  const [data, setData] = useState(false);
+  const [counterCompleted, setCounterCompleted] = useState(false);
+  const targetTime = new Date(`Oct 6, 2024 00:00:00`).getTime();
+
+  const generateTimeDisplay = () => {
+    const rightJustNow = new Date().getTime();
+    const runway = targetTime - rightJustNow;
+    const hours = Math.floor(
+      (runway % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor((runway % (1000 * 60 * 60)) / (1000 * 60));
+    const sec = Math.floor((runway % (1000 * 60)) / 1000);
+    const stateObj = {
+      hours: hours < 0 ? 0 : hours,
+      minutes: minutes < 0 ? 0 : minutes,
+      seconds: sec < 0 ? 0 : sec,
+    };
+    return stateObj;
+  };
+
+  const [timeDisplay, setTimeDisplay] = React.useState(generateTimeDisplay);
+  const updateCounters = () => setTimeDisplay(generateTimeDisplay);
+
+  React.useEffect(() => {
+    setInterval(() => setTimeDisplay(generateTimeDisplay), 1000);
+  }, []);
+
+  const CounterUtil = ({ displayValue, label }) => (
+    <div className="counter">
+      <h2 className="counter-h2">{label}</h2>
+      {displayValue}
+    </div>
+  );
+
+  document.documentElement.style.setProperty('--color-bg', '#22262E');
+  document.documentElement.style.setProperty('--color-heading', '#798EB0');
+  document.documentElement.style.setProperty('--color-counter', '#8973FD');
+  document.documentElement.style.setProperty('--font-family-heading', 'Mukta');
+
+  const CounterMain = () => (
+    <div className="app">
+      <section className="container">
+        <div className="date">
+          <h1 className="date-h1">🎉 Celebrations in 🎉</h1>
+        </div>
+        <div className="wrapped">
+          <CounterUtil displayValue={timeDisplay.hours} label={'Hours'} />
+          <CounterUtil displayValue={timeDisplay.minutes} label={'Minutes'} />
+          <CounterUtil displayValue={timeDisplay.seconds} label={'Seconds'} />
+        </div>
+        {timeDisplay.hours == 0 &&
+          timeDisplay.minutes == 0 &&
+          timeDisplay.seconds == 0 && (
+            <div className="date">
+              <button
+                className="date-button"
+                onClick={() => setCounterCompleted(true)}
+              >
+                {' '}
+                Start{' '}
+              </button>
+            </div>
+          )}
+      </section>
+    </div>
+  );
 
   return (
-    <div className="container">
-      <Head>
-        <title>Harshi!</title>
-      </Head>
-
-      <main>
-        {
-          data && (
-            <>
-              My Dear Harshi...
-              <br/>I know you are all irritated and frustrated due to the ongoing trip.
-              <br/>I just didn't want you to scold yuvi for nothing. 
-              <br/>I thought you would have done that and that's why 
-              <br/>I was just consoling him, making him cheer up with lame jokes.
-              <br/>I never wanted to hurt you.
-              <br/>I am really really sorry Harshi, if i did hurt you 😣.
-              <br/>Please forgive me miss beautiful.
-            </>
-          )
-        }
-        {
-          quizStarted && !data && (<>
-            <Header title="Let's do the Authorization First 😁" />
-            <Header title="Not for you Yuvi" />
-            <div className="mb-3">
-              <label htmlFor="nameInput"
-                className="form-label">
-                Date when we first met ("DD/MM"):
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="nameInput"
-                value={date}
-                onChange={(e) =>
-                  setDate(e.target.value)}
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="nameInput"
-                className="form-label">
-                Our First Movie (Lowercase):
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="nameInput"
-                value={movie}
-                onChange={(e) =>
-                  setMovie(e.target.value)}
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="nameInput"
-                className="form-label">
-                DOB ("DDMM"):
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="nameInput"
-                value={dob}
-                onChange={(e) =>
-                  setDob(e.target.value)}
-              />
-            </div>
-            <button
-              onClick={() => setData(true)}
-              className="button-62"
-              // Disable button if name is empty or whitespace
-              disabled={!(date === "26/01" && movie === "fighter" && dob === "3005")}
-            >
-              Welcome Harshi!!
-            </button>
-          </>)
-        }
-        {
-          !quizStarted && !data && (
-            <>
-              <Header title="Welcome Harshi 😍" />
-              <button
-                onClick={() => setQuizStarted(true)}
-                className="button-33"
-              >
-                Continue
-              </button>
-            </>)
-        }
-      </main>
-
-    </div >
-  )
+    <>
+      {!counterCompleted && <CounterMain />}
+      {counterCompleted && <p> Hello </p>}
+    </>
+  );
 }
