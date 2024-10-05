@@ -5,11 +5,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "export": "next export"
+    "start": "next start",
+    "export": "next build && next export"
   },
   "dependencies": {
-    "cypress": "^13.4.0",
-    "next": "^14.0.1",
+    "@netlify/plugin-nextjs": "^5.7.3",
+    "next": "^14.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
