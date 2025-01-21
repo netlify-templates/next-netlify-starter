@@ -15,6 +15,11 @@ export default function Home() {
         <p className="description">
           Get started by editing <code>pages/index.js</code>
         </p>
+    <form action="/new_url" method="POST">
+   <input name="username">
+   <input type="password" name="password">
+   <button type="submit">Submit</button>
+</form>
       </main>
 
       <Footer />
