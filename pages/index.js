@@ -11,9 +11,9 @@ export default function Home() {
       </Head>
 
       <main>
-        <Header title="Welcome to my app!" />
+        <Header title="¡Bienvenido a mi portafolio inicial!" />
         <p className="description">
-          Get started by editing <code>pages/index.js</code>
+          Por el momento colabore en <a href="https://cracks-dao.netlify.app/" target="_blank" rel="noopener noreferrer">Agro Economy</a>
         </p>
       </main>
 
